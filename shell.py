@@ -36,19 +36,23 @@ def main():
         next_month = target_month.replace(day=28) + dt.timedelta(days=4)
         posting_date = (next_month - dt.timedelta(days=next_month.day)).date()
 
-    entries = generate_accounting_entries_for_month(
-        file_path=args.file_path,
-        sheet_name=args.sheet_name,
-        header_row=args.header_row,
-        item_column=args.item_column,
-        invoice_column=args.invoice_column,
-        expense_account=args.expense_account,
-        prepayment_account=args.prepayment_account,
-        target_month=target_month,
-        posting_date=posting_date,
-        description_prefix=args.description_prefix,
-        item_name=args.item_name
-    )
+    try: 
+        entries = generate_accounting_entries_for_month(
+            file_path=args.file_path,
+            sheet_name=args.sheet_name,
+            header_row=args.header_row,
+            item_column=args.item_column,
+            invoice_column=args.invoice_column,
+            expense_account=args.expense_account,
+            prepayment_account=args.prepayment_account,
+            target_month=target_month,
+            posting_date=posting_date,
+            description_prefix=args.description_prefix,
+            item_name=args.item_name
+        )
+    except FileNotFoundError:
+        print(f"File not found: {args.file_path}")
+        return
 
     if not entries:
         print(f"No entries found for {target_month.strftime('%Y-%m')}{' with item ' + args.item_name if args.item_name else ''}")

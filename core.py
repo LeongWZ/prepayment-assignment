@@ -6,7 +6,11 @@ from models.worksheet import PrepaymentScheduleWorksheetModel
 from models.entry import AccountingEntryModel, EntryDataModel
 
 def sheet_to_2d_list(file_path: str, sheet_name: str, data_only=True) -> list[list[Any]]:
-    workbook = openpyxl.load_workbook(file_path, data_only=data_only)
+    try:
+        workbook = openpyxl.load_workbook(file_path, data_only=data_only)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {file_path} not found.")
+    
     sheet = workbook[sheet_name]
 
     data = []
