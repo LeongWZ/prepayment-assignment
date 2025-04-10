@@ -102,10 +102,6 @@ def generate_accounting_entries_for_month(
     if item_name:
         entry_data_list = filter_entries_by_item(entry_data_list, item_name)
 
-    if not entry_data_list:
-        print(f"No entries found for {target_month.strftime('%Y-%m')}{' with item ' + item_name if item_name else ''}")
-        return []
-
     return get_accounting_entries(
         entry_data_list=entry_data_list,
         posting_date=posting_date,

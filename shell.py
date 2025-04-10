@@ -51,6 +51,7 @@ def main():
     )
 
     if not entries:
+        print(f"No entries found for {target_month.strftime('%Y-%m')}{' with item ' + args.item_name if args.item_name else ''}")
         return
 
     print("Date | Description | Reference | Account | Amount")
