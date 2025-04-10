@@ -3,7 +3,6 @@ import datetime as dt
 
 from core import generate_accounting_entries_for_month
 
-
 def main():
     parser = argparse.ArgumentParser(description="Generate accounting entries for a given month.")
     parser.add_argument("file_path", type=str, help="Path to the Excel file.")
@@ -51,6 +50,10 @@ def main():
         item_name=args.item_name
     )
 
+    if not entries:
+        return
+
+    print("Date | Description | Reference | Account | Amount")
     for entry in entries:
         print(f"{entry.date.strftime('%Y-%m-%d')} | {entry.description} | {entry.reference} | {entry.account} | {entry.amount:.2f}")
 

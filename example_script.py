@@ -12,7 +12,7 @@ params = [
     "2024-05",                     # target_month
     "--posting-date", "2024-05-31",
     "--description-prefix", "Prepayment amortisation for",
-    "--item-name", "Insurance"
+    "--item-name", "Webhosting"
 ]
 
 # Run shell.py with the parameters
