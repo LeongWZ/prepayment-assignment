@@ -9,8 +9,9 @@ This project automates the generation of accounting entries for prepaid items ba
 - Accepts arguments via the command line for flexibility and ease of use.
 
 ## Requirements
-- Python 3.9 or higher
+- Python 3.10 or higher
 - `openpyxl` library (install using `pip install openpyxl`)
+- `pytest` library (for unit testing)
 
 ## Installation
 1. Clone this repository to your local machine.
@@ -81,11 +82,32 @@ Run the example script using:
 python example_script.py
 ```
 
+## Testing
+This project includes unit tests to ensure the correctness of its functionality. The tests are written using the `pytest` framework.
+
+### Running Tests
+To run all tests, execute the following command in the root directory of the project:
+```bash
+pytest
+```
+
+### Running Specific Tests
+To run a specific test file, use:
+```bash
+pytest tests/test_core.py
+```
+
+To run a specific test function, use:
+```bash
+pytest tests/test_core.py::test_get_accounting_entry
+```
+
 ## File Structure
 - `shell.py`: Main script to run the automation.
 - `core.py`: Contains core logic for generating accounting entries.
 - `models/entry.py`: Defines data models for entries.
 - `models/worksheet.py`: Handles worksheet-related operations.
+- `tests/`: Contains unit tests for the project.
 - `Prepayment assignment.xlsx`: Example Excel file containing the prepayment schedule.
 
 ## License
